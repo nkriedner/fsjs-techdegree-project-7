@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import apiKey from "./config";
 import PhotoList from "./components/PhotoList";
 import Nav from "./components/Nav";
@@ -33,7 +34,12 @@ function App() {
             <div className="container">
                 <Search />
                 <Nav />
-                <PhotoList />
+                <Routes>
+                    <Route path="/" element={<Navigate to="/forest" />} />
+                    <Route path="forest" element={<PhotoList imageData={forestImages} />} />
+                    <Route path="mountain" element={<PhotoList imageData={mountainImages} />} />
+                    <Route path="desert" element={<PhotoList imageData={desertImages} />} />
+                </Routes>
             </div>
         </>
     );
