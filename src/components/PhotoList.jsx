@@ -1,7 +1,7 @@
 import React from "react";
 import Photo from "./Photo";
 
-const PhotoList = ({ imageData }) => {
+const PhotoList = ({ imageData, pageTitle }) => {
     // console.log(imageData);
     let images = imageData.map((image) => {
         const imageUrl = `https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
@@ -11,7 +11,7 @@ const PhotoList = ({ imageData }) => {
 
     return (
         <div className="photo-container">
-            <h2>Results</h2>
+            <h2>{pageTitle}</h2>
             <ul>
                 {images}
 

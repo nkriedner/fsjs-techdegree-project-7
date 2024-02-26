@@ -36,9 +36,18 @@ function App() {
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Navigate to="/forest" />} />
-                    <Route path="forest" element={<PhotoList imageData={forestImages} />} />
-                    <Route path="mountain" element={<PhotoList imageData={mountainImages} />} />
-                    <Route path="desert" element={<PhotoList imageData={desertImages} />} />
+                    <Route
+                        path="forest"
+                        element={<PhotoList imageData={forestImages} pageTitle="Forest images from Flickr API" />}
+                    />
+                    <Route
+                        path="mountain"
+                        element={<PhotoList imageData={mountainImages} pageTitle="Mountain images from Flickr API" />}
+                    />
+                    <Route
+                        path="desert"
+                        element={<PhotoList imageData={desertImages} pageTitle="Desert images from Flickr API" />}
+                    />
                 </Routes>
             </div>
         </>
