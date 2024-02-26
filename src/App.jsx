@@ -10,7 +10,9 @@ function App() {
     const [forestImages, setForestImages] = useState([]);
     const [mountainImages, setMountainImages] = useState([]);
     const [desertImages, setDesertImages] = useState([]);
-    // const [searchImages, setSearchImages] = useState([]);
+    const [searchImages, setSearchImages] = useState([]);
+    // Set state for the queries
+    const [searchQuery, setSearchQuery] = useState("");
 
     // Fetch Data Function
     function fetchData(query, setDataFunction) {
@@ -29,10 +31,22 @@ function App() {
         fetchData("desert", setDesertImages);
     }, []);
 
+    // Call fetchdata on query searches
+    useEffect(() => {
+        if (searchQuery) {
+            fetchData(searchQuery, setSearchImages);
+        }
+    }, [searchQuery]);
+
+    // Sets the search query when called:
+    const handleQueryChange = (searchText) => {
+        setSearchQuery(searchText);
+    };
+
     return (
         <>
             <div className="container">
-                <Search />
+                <Search changeQuery={handleQueryChange} />
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Navigate to="/forest" />} />
@@ -47,6 +61,10 @@ function App() {
                     <Route
                         path="desert"
                         element={<PhotoList imageData={desertImages} pageTitle="Desert images from Flickr API" />}
+                    />
+                    <Route
+                        path="search"
+                        element={<PhotoList imageData={searchImages} pageTitle="Your search results from Flickr API" />}
                     />
                 </Routes>
             </div>
