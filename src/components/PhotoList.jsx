@@ -11,7 +11,7 @@ const PhotoList = ({ imageData, pageTitle }) => {
 
     return (
         <div className="photo-container">
-            <h2>{pageTitle}</h2>
+            <h2>Flickr photos for: {pageTitle}</h2>
             <ul>
                 {images}
 

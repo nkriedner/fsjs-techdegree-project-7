@@ -9,7 +9,7 @@ const Search = (props) => {
         e.preventDefault();
         console.log(searchText);
         props.changeQuery(searchText);
-        navigate("/search");
+        navigate(`/search/${searchText}`);
         e.currentTarget.reset();
     };
 

@@ -50,21 +50,12 @@ function App() {
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Navigate to="/forest" />} />
+                    <Route path="forest" element={<PhotoList imageData={forestImages} pageTitle="forest" />} />
+                    <Route path="mountain" element={<PhotoList imageData={mountainImages} pageTitle="mountain" />} />
+                    <Route path="desert" element={<PhotoList imageData={desertImages} pageTitle="desert" />} />
                     <Route
-                        path="forest"
-                        element={<PhotoList imageData={forestImages} pageTitle="Forest images from Flickr API" />}
-                    />
-                    <Route
-                        path="mountain"
-                        element={<PhotoList imageData={mountainImages} pageTitle="Mountain images from Flickr API" />}
-                    />
-                    <Route
-                        path="desert"
-                        element={<PhotoList imageData={desertImages} pageTitle="Desert images from Flickr API" />}
-                    />
-                    <Route
-                        path="search"
-                        element={<PhotoList imageData={searchImages} pageTitle="Your search results from Flickr API" />}
+                        path="search/:query"
+                        element={<PhotoList imageData={searchImages} pageTitle={searchQuery} />}
                     />
                 </Routes>
             </div>
