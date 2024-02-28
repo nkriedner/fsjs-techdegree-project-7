@@ -14,14 +14,20 @@ function App() {
     const [searchImages, setSearchImages] = useState([]);
     // Set state for the queries
     const [searchQuery, setSearchQuery] = useState("");
+    // Set state for loading data stage
+    const [isLoading, setLoading] = useState(true);
 
     // Fetch Data Function
     function fetchData(query, setDataFunction) {
+        setLoading(true);
+        console.log("isLoading before:", isLoading);
         fetch(
             `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
         )
             .then((response) => response.json())
             .then((responseData) => setDataFunction(responseData.photos.photo))
+            .then(setLoading(false))
+            .then(console.log("isLoading after:", isLoading))
             .catch((error) => console.log("Error fetching and parsing image data:", error));
     }
 
@@ -51,12 +57,21 @@ function App() {
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Navigate to="/forest" />} />
-                    <Route path="forest" element={<PhotoList imageData={forestImages} pageTitle="forest" />} />
-                    <Route path="mountain" element={<PhotoList imageData={mountainImages} pageTitle="mountain" />} />
-                    <Route path="desert" element={<PhotoList imageData={desertImages} pageTitle="desert" />} />
+                    <Route
+                        path="forest"
+                        element={<PhotoList imageData={forestImages} pageTitle="forest" isLoading={isLoading} />}
+                    />
+                    <Route
+                        path="mountain"
+                        element={<PhotoList imageData={mountainImages} pageTitle="mountain" isLoading={isLoading} />}
+                    />
+                    <Route
+                        path="desert"
+                        element={<PhotoList imageData={desertImages} pageTitle="desert" isLoading={isLoading} />}
+                    />
                     <Route
                         path="search/:query"
-                        element={<PhotoList imageData={searchImages} pageTitle={searchQuery} />}
+                        element={<PhotoList imageData={searchImages} pageTitle={searchQuery} isLoading={isLoading} />}
                     />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>

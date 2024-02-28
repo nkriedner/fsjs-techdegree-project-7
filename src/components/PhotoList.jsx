@@ -1,7 +1,8 @@
 import React from "react";
 import Photo from "./Photo";
+import NoResults from "./NoResults";
 
-const PhotoList = ({ imageData, pageTitle }) => {
+const PhotoList = ({ imageData, pageTitle, isLoading }) => {
     // console.log("imageData:", imageData);
     let images = imageData.map((image) => {
         const imageUrl = `https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
@@ -15,14 +16,9 @@ const PhotoList = ({ imageData, pageTitle }) => {
 
             <ul>
                 {/* Show images or no results message */}
-                {images.length > 0 ? (
-                    images
-                ) : (
-                    <li className="not-found">
-                        <h3>No Results Found</h3>
-                        <p>You search did not return any results. Please try again.</p>
-                    </li>
-                )}
+                {/* {isLoading ? <p>Loading...</p> : images.length > 0 ? images : <NoResults />} */}
+
+                {images.length > 0 ? images : <NoResults />}
             </ul>
         </div>
     );
