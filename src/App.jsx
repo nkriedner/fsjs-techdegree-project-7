@@ -17,7 +17,7 @@ function App() {
     // Fetch Data Function
     function fetchData(query, setDataFunction) {
         fetch(
-            `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
+            `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
         )
             .then((response) => response.json())
             .then((responseData) => setDataFunction(responseData.photos.photo))
