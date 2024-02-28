@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Search = (props) => {
-    const [searchText, setSearchText] = useState("");
+    // const [searchText, setSearchText] = useState("");
+    const searchText = useRef(null);
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(searchText);
-        props.changeQuery(searchText);
-        navigate(`/search/${searchText}`);
+        // console.log(searchText);
+        props.changeQuery(searchText.current.value);
+        navigate(`/search/${searchText.current.value}`);
         e.currentTarget.reset();
     };
 
     return (
         <form onSubmit={(e) => handleSubmit(e)} className="search-form">
             <input
-                onChange={(e) => setSearchText(e.target.value)}
+                // onChange={(e) => setSearchText(e.target.value)}
+                ref={searchText}
                 type="search"
                 name="search"
                 placeholder="Search"
