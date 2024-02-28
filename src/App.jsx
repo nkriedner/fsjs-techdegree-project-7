@@ -4,6 +4,7 @@ import apiKey from "./config";
 import PhotoList from "./components/PhotoList";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
     // Set state for the images to be fetched
@@ -57,6 +58,7 @@ function App() {
                         path="search/:query"
                         element={<PhotoList imageData={searchImages} pageTitle={searchQuery} />}
                     />
+                    <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </div>
         </>
