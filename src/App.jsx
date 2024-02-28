@@ -25,8 +25,12 @@ function App() {
             `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
         )
             .then((response) => response.json())
-            .then((responseData) => setDataFunction(responseData.photos.photo))
-            .then(setLoading(false))
+            .then((responseData) => {
+                setDataFunction(responseData.photos.photo);
+                setLoading(false);
+            })
+            // .then((responseData) => setDataFunction(responseData.photos.photo))
+            // .then(setLoading(false))
             .then(console.log("isLoading after:", isLoading))
             .catch((error) => console.log("Error fetching and parsing image data:", error));
     }

@@ -16,9 +16,9 @@ const PhotoList = ({ imageData, pageTitle, isLoading }) => {
 
             <ul>
                 {/* Show images or no results message */}
-                {/* {isLoading ? <p>Loading...</p> : images.length > 0 ? images : <NoResults />} */}
+                {isLoading ? <p>Loading...</p> : images.length > 0 ? images : <NoResults />}
 
-                {images.length > 0 ? images : <NoResults />}
+                {/* {images.length > 0 ? images : <NoResults />} */}
             </ul>
         </div>
     );
