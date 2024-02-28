@@ -3,7 +3,6 @@ import Photo from "./Photo";
 import NoResults from "./NoResults";
 
 const PhotoList = ({ imageData, pageTitle, isLoading }) => {
-    // console.log("imageData:", imageData);
     let images = imageData.map((image) => {
         const imageUrl = `https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
         return <Photo url={imageUrl} key={image.id} />;
@@ -17,8 +16,6 @@ const PhotoList = ({ imageData, pageTitle, isLoading }) => {
             <ul>
                 {/* Show images or no results message */}
                 {isLoading ? <p>Loading...</p> : images.length > 0 ? images : <NoResults />}
-
-                {/* {images.length > 0 ? images : <NoResults />} */}
             </ul>
         </div>
     );

@@ -29,9 +29,6 @@ function App() {
                 setDataFunction(responseData.photos.photo);
                 setLoading(false);
             })
-            // .then((responseData) => setDataFunction(responseData.photos.photo))
-            // .then(setLoading(false))
-            .then(console.log("isLoading after:", isLoading))
             .catch((error) => console.log("Error fetching and parsing image data:", error));
     }
 
