@@ -57,7 +57,7 @@ function App() {
                 <Search changeQuery={handleQueryChange} />
                 <Nav />
                 <Routes>
-                    <Route path="/" element={<Navigate to="/forest" />} />
+                    <Route index element={<Navigate to="forest" />} />
                     <Route
                         path="forest"
                         element={<PhotoList imageData={forestImages} pageTitle="forest" isLoading={isLoading} />}
