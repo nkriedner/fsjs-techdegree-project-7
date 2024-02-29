@@ -35,7 +35,6 @@ function App() {
                 } else {
                     setSearchImages(responseData.photos.photo);
                 }
-                // setDataFunction(responseData.photos.photo);
                 setLoading(false);
             })
             .catch((error) => console.log("Error fetching and parsing image data:", error));
@@ -49,23 +48,10 @@ function App() {
         fetchData("desert");
     }, []);
 
-    // Call fetchdata on query searches
-    // useEffect(() => {
-    //     if (searchQuery) {
-    //         fetchData(searchQuery, setSearchImages);
-    //     }
-    // }, [searchQuery]);
-
-    // Sets the search query when called:
-    // const handleQueryChange = (searchText) => {
-    //     setSearchQuery(searchText);
-    // };
-
     return (
         <>
             <div className="container">
                 <Search />
-                {/* <Search changeQuery={handleQueryChange} /> */}
                 <Nav />
                 <Routes>
                     <Route index element={<Navigate replace to="forest" />} />
