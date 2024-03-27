@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import apiKey from "./config";
+// import apiKey from "./config";
+const apiKey = import.meta.env.VITE_API_KEY;
 import PhotoList from "./components/PhotoList";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
