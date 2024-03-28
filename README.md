@@ -1,6 +1,8 @@
+View live version: https://main--fabulous-taiyaki-34d98a.netlify.app
+
 # Comments for project submission
 
-The api key is in a 'config.js' file and named 'apiKey'.
+The Flickr api key is in a '.env' file and named 'apiKey'.
 
 # React + Vite
 
